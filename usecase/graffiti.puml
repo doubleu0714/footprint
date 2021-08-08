@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+actor User as u
+actor Member as m
+actor PathFinder as p
+u <|-- m
+m <|-- p
+
+package 낙서(Graffiti)서비스 {
+    usecase "footprint에 낙서 등록" as g.uc1
+    usecase "footprint에 낙서 수정" as g.uc2
+    usecase "footprint에 낙서 삭제" as g.uc3
+    usecase "footprint에 낙서 like 하기" as g.uc4
+    usecase "footprint에 낙서 신고하기" as g.uc5
+    usecase "낙서 검색하기" as g.uc6
+    usecase "낙서에 댓글 달기" as g.uc7
+    usecase "낙서 댓글에 답글달기" as g.uc8
+}
+u --> g.uc6
+m --> g.uc1
+p --> g.uc2
+p --> g.uc3
+m --> g.uc4
+m --> g.uc5
+m --> g.uc7
+m --> g.uc8
+@enduml
