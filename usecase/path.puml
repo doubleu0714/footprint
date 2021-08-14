@@ -18,6 +18,8 @@ package 경로(path)서비스 {
     usecase "경로에서 footprint 제거하기" as r.uc9
     usecase "경로에 footprint 추가하기" as r.uc10
     usecase "경로에 좋아요 하기" as r.uc11
+    usecase "경로에 에세이 남기기" as r.uc12
+    usecase "경로 신고하기" as r.uc13
 }
 u --> r.uc8
 m --> r.uc1
@@ -30,12 +32,18 @@ m --> r.uc7
 p --> r.uc9
 p --> r.uc10
 m --> r.uc11
+p --> r.uc12
+m --> r.uc13
 
 note right of r.uc11
     하나의 경로에 한번만 가능하다.
 end note
 
 note right of r.uc4
+    하나의 경로에 한번만 가능하다.
+end note
+
+note right of r.uc13
     하나의 경로에 한번만 가능하다.
 end note
 @enduml

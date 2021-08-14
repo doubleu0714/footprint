@@ -7,7 +7,11 @@ u <|-- m
 package 회원서비스 {
     usecase "서비스가입" as m.uc1
     usecase "서비스탈퇴" as m.uc2
+    usecase "이메일 수정" as m.uc3
+    usecase "닉네임 수정" as m.uc4
 }
 u --> m.uc1
 m --> m.uc2
+m --> m.uc3
+m --> m.uc4
 @enduml

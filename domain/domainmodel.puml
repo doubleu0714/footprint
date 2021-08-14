@@ -1,0 +1,146 @@
+@startuml
+left to right direction
+
+entity Member {
+    GUID
+    권한
+    이메일
+    닉네임
+    프로필 이미지
+    비밀번호
+    서비스 가입()
+    서비스 탈퇴()
+    이메일 변경()
+    닉네임 변경()
+    비밀번호 변경()
+}
+
+entity Path {
+    GUID
+    Footprints
+    Member
+    Like
+    Report
+    Essay
+    Comments
+    이름
+    경로 등록()
+    경로 이름 수정()
+    경로에 발자국 추가()
+    경로에서 발자국 제외()
+    에세이 등록()
+    에세이 수정()
+    에세이 삭제()
+    경로에 좋아요 설정()
+    경로에 신고 설정()
+    경로 공유()
+    댓글 등록()
+    댓글에 좋아요 설정()
+    답글 등록()
+    답글에 좋아요 설정()
+}
+
+class Essay {
+    내용
+}
+
+class Comment {
+    Member
+    Replies
+    Like
+    Report
+    내용
+}
+
+class Reply {
+    Member
+    Like
+    Report
+    내용
+}
+
+entity Footprint {
+    GUID
+    Graffiti
+    Location
+    Member
+    생성일시
+    발자국 생성()
+    발자국 위치 수정()
+    발자국 삭제()
+}
+
+class Location {
+    위도
+    경도
+}
+
+entity Graffiti {
+    Like
+    Report
+    Comments
+    내용
+    낙서 등록()
+    낙서 내용 수정()
+    낙서 삭제()
+    낙서에 좋아요 설정()
+    낙서에 신고 설정()
+    댓글 등록()
+    댓글에 좋아요 설정()
+    답글 등록()
+    답글에 좋아요 설정()
+}
+
+entity Bookmark {
+    Member
+    Path
+    북마크 이름
+    북마크 이름 수정()
+    북마크 생성()
+    북마크 삭제()
+}
+
+class Like {
+    Members
+    횟수
+}
+
+class Report {
+    Members
+    횟수
+}
+
+entity Media {
+    GUID
+    Member
+    경로
+    크기
+    업로드()
+    삭제()
+}
+
+Path "1" --> "0..*" Footprint
+Path "0..*" --> "1" Member
+Path "1" --* "1" Like
+Path "1" --* "1" Report
+Path "1" --* "0..1" Essay
+Path "1" --* "0..*" Comment
+Comment "1" --* "0..*" Reply
+Comment "0..*" --* "1" Member
+Comment "1" --* "1" Like
+Comment "1" --* "1" Report
+Reply "0..*" --* "1" Member
+Reply "1" --* "1" Like
+Reply "1" --* "1" Report
+Footprint "1" --* "1" Location
+Footprint "0..*" --> "1" Member
+Footprint "1" --> "0..1" Graffiti
+Graffiti "1" --* "1" Like
+Graffiti "1" --* "1" Report
+Graffiti "1" --* "0..*" Comment
+Like "1" --> "0..*" Member
+Report "1" --> "0..*" Member
+Bookmark "0..*" --> "1" Member
+Bookmark "0..*" --> "1" Path
+Media "0..*" --> "1" Member
+@enduml

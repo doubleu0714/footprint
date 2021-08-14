@@ -9,23 +9,15 @@ package 발자국(footprint)서비스 {
     usecase "경로에 자동 발자국 생성 활성" as f.uc1
     usecase "경로에 자동 발자국 생성 주기변경" as f.uc2
     usecase "경로에 자동 발자국 생성 비활성" as f.uc3
-    usecase "경로에 발자국 생성" as f.uc4
-    usecase "경로에 발자국 위치변경" as f.uc5
-    usecase "발자국 영역 설정하기" as f.uc6
-    usecase "발자국 합치기" as f.uc7
+    usecase "발자국 생성" as f.uc4
+    usecase "발자국 위치변경" as f.uc5
+    usecase "발자국 삭제" as f.uc6
 }
+
 m --> f.uc1
 m --> f.uc2
 m --> f.uc3
 m --> f.uc4
 p --> f.uc5
-m --> f.uc6
-p --> f.uc7
-
-note right of f.uc6
-    영역안에 다른 발자국이 있다면 하나로 합칠 수 있다.
-end note
-note right of f.uc7
-    영역안에 다른 발자국이 있다면 하나로 합칠 수 있다.
-end note
+p --> f.uc6
 @enduml
